@@ -1,2 +1,13 @@
-// your components will all go in this `component` directory.
-// feel free to change this component.js into TodoList.js
+import React, { Component } from "react";
+import ReactDOM from "react-dom";
+
+class TodoList extends React.Component (props) {
+    constructor(){
+        super();
+
+
+        this.render(){
+
+        };
+    };
+};
