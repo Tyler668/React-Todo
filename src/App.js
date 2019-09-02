@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import TodoList from './components/TodoComponents/TodoList';
 import TodoForm from './components/TodoComponents/TodoForm';
-// import "./styles.css";
+import './components/TodoComponents/Todo.css';
 
 class App extends React.Component {
   // 'C' declare your 'CLASS'

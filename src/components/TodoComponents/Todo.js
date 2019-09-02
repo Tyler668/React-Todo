@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 
 const Todo = props => {
     return (
-    <li onClick = {props.setComplete} className = {`item ${props.isComplete ? 'completed' : ''}`}>{props.itemProp}</li>
+    <li className =  {`todo${props.isComplete ? ' completed' : ''}`} onClick = {props.setComplete} >{props.itemProp}</li>
     );
 }
 export default Todo;
