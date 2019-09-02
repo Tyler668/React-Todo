@@ -1,13 +1,28 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
+import Todo from './Todo';
 
-class TodoList extends React.Component (props) {
-    constructor(){
-        super();
+const TodoList = props => {
+    // constructor() { 
+    //     super();
+    //     this.state = {this.state.listProps}
+    // }
+    const list = props.listProps;
 
 
-        this.render(){
+    return (
+        <div className="list-container">
+            <ol className="ordered-list">
+                {list.data.map(item =>(
+                    
+                        <Todo  setComplete = {props.setComplete} id = {item.id} itemProp = {item.task} isComplete = {item.completed}/>
+                
+                ))}
+             </ol>
+        </div>
+    );
 
-        };
-    };
-};
+}
+
+
+export default TodoList;
