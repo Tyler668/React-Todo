@@ -20,7 +20,7 @@ class App extends React.Component {
         {
           task: 'Bake Cookies',
           id: 1528817084358,
-          completed: true
+          completed: false
         }
       ]
     }
@@ -30,30 +30,33 @@ class App extends React.Component {
 
    addItem = (item) =>{
      let newState = {};
-     newState = {data: [...this.state.data, item]};
+     const newItem = {...item, id: Date.now()};
+     newState = {data: [...this.state.data, newItem]};
      this.setState(newState);
     console.log(this.state)
    };
 
-   setComplete = (e) =>{
-    //  let currentList = this.state.data;
-    //  currentList.forEach(item =>{
-    //    if(item === e.target){
-    //      item.completed = true;
-    //      item.task = 'done';
-    //    }
-    //  })
+   toggleItem = id => {
+    this.setState({
+      data: this.state.data.map(item => {
+        if (item.id === id) {
+          return {
+            ...item,
+            completed: !item.completed
+          };
+        } else {
+          return item;
+        }
+      })
+    });
+  };
 
-     console.log(e.target);
-   }
 
-  //  clearList = () =>{
-  //    const currentList = this.state.data;
-  //    currentList.forEach(item =>{
-  //      if(item.)
-  //    }) 
-  //  }
-   
+  clearPurchased = () => {
+    this.setState({
+      data: this.state.data.filter(item => !item.completed)
+    });
+  };
 
 
 
@@ -61,8 +64,8 @@ class App extends React.Component {
     // 'R' don't forget to call 'RENDER'
     return (
       <div className="App">
-          <TodoList setComplete = {this.setComplete} listProps = {this.state} />
-          <TodoForm addItem = {this.addItem} listProps = {this.state} />
+          <TodoList toggleItem = {this.toggleItem}  listProps = {this.state} />
+          <TodoForm addItem = {this.addItem} listProps = {this.state} clearPurchased = {this.clearPurchased}/>
       </div>
     );
   }

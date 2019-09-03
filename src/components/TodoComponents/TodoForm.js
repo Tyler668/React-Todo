@@ -8,7 +8,7 @@ const TodoForm = (props) => {
         <div className='form-container'>
             <input  className = "itemField" />
             <button onClick={() => props.addItem({task: `${document.querySelector('input').value}`})}>Add Item to List</button>
-            <button>Clear Completed List Items</button>
+            <button onClick = {() =>{props.clearPurchased()}}>Clear Completed List Items</button>
         </div>
     );
 
